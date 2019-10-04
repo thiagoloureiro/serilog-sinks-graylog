@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Serilog.Events;
+﻿using Serilog.Events;
 using Serilog.Parsing;
+using System;
+using System.Collections.Generic;
 
 namespace Serilog.Sinks.Graylog.Tests
 {
@@ -14,7 +14,6 @@ namespace Serilog.Sinks.Graylog.Tests
                 {
                     new TextToken("abcdef", 0),
                     new PropertyToken("TestProp", "zxc", alignment:new Alignment(AlignmentDirection.Left, 3))
-
                 }), new List<LogEventProperty>
                 {
                     new LogEventProperty("TestProp", new ScalarValue("zxc")),
@@ -23,7 +22,7 @@ namespace Serilog.Sinks.Graylog.Tests
             return logEvent;
         }
 
-        public  static LogEvent GetErrorEvent(DateTimeOffset date)
+        public static LogEvent GetErrorEvent(DateTimeOffset date)
         {
             var logEvent = new LogEvent(date, LogEventLevel.Information, new InvalidCastException("Some errror"),
                 new MessageTemplate("", new List<MessageTemplateToken>()),
@@ -38,7 +37,6 @@ namespace Serilog.Sinks.Graylog.Tests
                 {
                     new TextToken("abcdef", 0),
                     new PropertyToken("TestProp", "zxc", alignment:new Alignment(AlignmentDirection.Left, 3))
-
                 }), new List<LogEventProperty>
                 {
                     new LogEventProperty("TestProp", new ScalarValue("zxc")),

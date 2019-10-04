@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Serilog.Debugging;
 using Serilog.Sinks.Graylog.Core.Transport.Http;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Serilog.Sinks.Graylog.Core.Tests.Transport.Http

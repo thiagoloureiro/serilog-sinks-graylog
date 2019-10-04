@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using AutoFixture;
 using Moq;
-using AutoFixture;
 using Serilog.Sinks.Graylog.Core.Extensions;
 using Serilog.Sinks.Graylog.Core.Transport;
 using Serilog.Sinks.Graylog.Core.Transport.Udp;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Serilog.Sinks.Graylog.Core.Tests.Transport.Udp
@@ -36,7 +36,6 @@ namespace Serilog.Sinks.Graylog.Core.Tests.Transport.Udp
             {
                 transportClient.Verify(c => c.Send(chunk), Times.Once);
             }
-            
         }
     }
 }

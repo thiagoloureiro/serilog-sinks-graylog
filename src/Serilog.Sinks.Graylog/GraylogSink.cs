@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Serilog.Core;
 using Serilog.Debugging;
 using Serilog.Events;
 using Serilog.Sinks.Graylog.Core;
 using Serilog.Sinks.Graylog.Core.Transport;
+using System;
+using System.Threading.Tasks;
 
 namespace Serilog.Sinks.Graylog
 {
@@ -14,14 +14,13 @@ namespace Serilog.Sinks.Graylog
         private readonly Lazy<IGelfConverter> _converter;
         private readonly Lazy<ITransport> _transport;
 
-        
         public GraylogSink(GraylogSinkOptions options)
         {
             ISinkComponentsBuilder sinkComponentsBuilder = new SinkComponentsBuilder(options);
             _transport = new Lazy<ITransport>(() => sinkComponentsBuilder.MakeTransport());
             _converter = new Lazy<IGelfConverter>(() => sinkComponentsBuilder.MakeGelfConverter());
         }
-        
+
         public void Dispose()
         {
             _transport.Value.Dispose();

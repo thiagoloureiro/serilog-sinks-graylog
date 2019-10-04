@@ -1,10 +1,10 @@
-﻿using System;
-using Serilog.Configuration;
+﻿using Serilog.Configuration;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Sinks.Graylog.Core;
 using Serilog.Sinks.Graylog.Core.Helpers;
 using Serilog.Sinks.Graylog.Core.Transport;
+using System;
 
 namespace Serilog.Sinks.Graylog.Batching
 {

@@ -1,14 +1,13 @@
-﻿using System.Linq;
-using System.Net;
-using AutoFixture;
+﻿using AutoFixture;
 using Serilog.Sinks.Graylog.Core.Transport.Udp;
+using System.Linq;
+using System.Net;
 using Xunit;
 
 namespace Serilog.Sinks.Graylog.Core.Tests.Transport.Udp
 {
     public class UdpTransportClientFixture
     {
-
         [Fact]
         public void TrySendSomeData()
         {
@@ -17,7 +16,6 @@ namespace Serilog.Sinks.Graylog.Core.Tests.Transport.Udp
 
             var fixture = new Fixture();
             var bytes = fixture.CreateMany<byte>(128);
-
 
             var client = new UdpTransportClient(ipLocalEndPoint);
 

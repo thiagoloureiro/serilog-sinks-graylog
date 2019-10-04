@@ -1,12 +1,10 @@
-﻿using System;
-using Serilog.Configuration;
+﻿using Serilog.Configuration;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Sinks.Graylog.Core;
 using Serilog.Sinks.Graylog.Core.Extensions;
 using Serilog.Sinks.Graylog.Core.Helpers;
 using Serilog.Sinks.Graylog.Core.Transport;
-
 
 namespace Serilog.Sinks.Graylog
 {
@@ -20,7 +18,7 @@ namespace Serilog.Sinks.Graylog
         /// <returns></returns>
         public static LoggerConfiguration Graylog(this LoggerSinkConfiguration loggerSinkConfiguration, GraylogSinkOptions options)
         {
-            var sink = (ILogEventSink) new GraylogSink(options);
+            var sink = (ILogEventSink)new GraylogSink(options);
             return loggerSinkConfiguration.Sink(sink, options.MinimumLogEventLevel);
         }
 

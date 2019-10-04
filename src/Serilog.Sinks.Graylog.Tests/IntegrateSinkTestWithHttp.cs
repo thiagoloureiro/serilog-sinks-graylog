@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using AutoFixture;
+﻿using AutoFixture;
 using Serilog.Events;
 using Serilog.Exceptions;
-using Xunit;
 using Serilog.Sinks.Graylog.Core.Helpers;
 using Serilog.Sinks.Graylog.Core.Transport;
 using Serilog.Sinks.Graylog.Tests.ComplexIntegrationTest;
+using System;
+using System.Linq;
+using Xunit;
 
 namespace Serilog.Sinks.Graylog.Tests
 {
@@ -106,7 +106,6 @@ namespace Serilog.Sinks.Graylog.Tests
             logger.Information("battle profile:  {@BattleProfile}", profile);
         }
 
-
         [Fact]
         [Trait("Category", "Integration")]
         public void LogInformationWithOneProfile()
@@ -171,14 +170,14 @@ namespace Serilog.Sinks.Graylog.Tests
             loggerConfig
                 .Enrich.WithExceptionDetails()
                 .WriteTo.Graylog(new GraylogSinkOptions
-            {
-                MinimumLogEventLevel = LogEventLevel.Information,
-                MessageGeneratorType = MessageIdGeneratortype.Timestamp,
-                TransportType = TransportType.Http,
-                Facility = "VolkovTestFacility",
-                HostnameOrAddress = "http://logs.aeroclub.int",
-                Port = 12201
-            });
+                {
+                    MinimumLogEventLevel = LogEventLevel.Information,
+                    MessageGeneratorType = MessageIdGeneratortype.Timestamp,
+                    TransportType = TransportType.Http,
+                    Facility = "VolkovTestFacility",
+                    HostnameOrAddress = "http://logs.aeroclub.int",
+                    Port = 12201
+                });
 
             var test = new TestClass
             {
@@ -192,7 +191,6 @@ namespace Serilog.Sinks.Graylog.Tests
                 TestPropertyThree = "3",
                 TestPropertyTwo = "2"
             };
-
 
             var logger = loggerConfig.CreateLogger();
 
@@ -212,6 +210,5 @@ namespace Serilog.Sinks.Graylog.Tests
                 logger.Error(exc, "test exception with object {@test}", test);
             }
         }
-
     }
 }

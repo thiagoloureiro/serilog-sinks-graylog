@@ -1,7 +1,7 @@
-﻿using System;
-using System.Text;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Serilog.Events;
+using System;
+using System.Text;
 
 namespace Serilog.Sinks.Graylog.Core.MessageBuilders
 {
@@ -69,6 +69,5 @@ namespace Serilog.Sinks.Graylog.Core.MessageBuilders
 
             return new Tuple<string, string>(exceptionDetail, stackDetail);
         }
-
     }
 }

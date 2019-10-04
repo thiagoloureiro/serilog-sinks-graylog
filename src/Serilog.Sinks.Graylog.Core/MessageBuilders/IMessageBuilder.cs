@@ -25,6 +25,7 @@ namespace Serilog.Sinks.Graylog.Core.MessageBuilders
         /// Exception Builder
         /// </summary>
         Exception,
+
         /// <summary>
         /// Message Builder
         /// </summary>

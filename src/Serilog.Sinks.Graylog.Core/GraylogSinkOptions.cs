@@ -1,5 +1,4 @@
-﻿using System;
-using Serilog.Events;
+﻿using Serilog.Events;
 using Serilog.Sinks.Graylog.Core.Helpers;
 using Serilog.Sinks.Graylog.Core.Transport;
 
@@ -17,6 +16,7 @@ namespace Serilog.Sinks.Graylog.Core
         public const MessageIdGeneratortype DefaultMessageGeneratorType = MessageIdGeneratortype.Timestamp;
 
         public const int DefaultMaxMessageSizeInUdp = 8192;
+
         /// <summary>
         /// The default option value (null) for GELF's "host" property. DNS hostname will be used instead.
         /// </summary>
@@ -100,6 +100,7 @@ namespace Serilog.Sinks.Graylog.Core
         /// </remarks>
 
         public TransportType TransportType { get; set; }
+
         /// <summary>
         /// Gets or sets the gelf converter.
         /// </summary>

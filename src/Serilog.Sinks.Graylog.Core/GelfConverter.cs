@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Serilog.Events;
 using Serilog.Sinks.Graylog.Core.MessageBuilders;
+using System;
+using System.Collections.Generic;
 
 namespace Serilog.Sinks.Graylog.Core
 {

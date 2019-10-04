@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Serilog.Sinks.Graylog.Core.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Serilog.Sinks.Graylog.Core.Helpers;
 
 namespace Serilog.Sinks.Graylog.Core.Transport.Udp
 {
@@ -31,7 +31,7 @@ namespace Serilog.Sinks.Graylog.Core.Transport.Udp
         /// </summary>
         /// <param name="settings">The settings.</param>
         /// <param name="generatorResolver">The generator resolver.</param>
-        public DataToChunkConverter(ChunkSettings settings, 
+        public DataToChunkConverter(ChunkSettings settings,
                                     IMessageIdGeneratorResolver generatorResolver)
         {
             _settings = settings;
@@ -50,7 +50,7 @@ namespace Serilog.Sinks.Graylog.Core.Transport.Udp
             int messageLength = message.Length;
             if (messageLength <= _settings.MaxMessageSizeInUdp)
             {
-                return new List<byte[]>(1) {message};
+                return new List<byte[]>(1) { message };
             }
 
             int chunksCount = messageLength / _settings.MaxMessageSizeInChunk + 1;

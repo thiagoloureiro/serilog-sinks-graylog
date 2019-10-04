@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Serilog.Events;
 using Serilog.Parsing;
 using Serilog.Sinks.Graylog.Core.MessageBuilders;
 using Serilog.Sinks.Graylog.Tests;
+using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Serilog.Sinks.Graylog.Core.Tests.MessageBuilders
@@ -24,9 +24,9 @@ namespace Serilog.Sinks.Graylog.Core.Tests.MessageBuilders
             {
                 facility = "GELF",
                 full_message = "abcdef\"zxc\"",
-                host= "localhost",
+                host = "localhost",
                 level = 2,
-                short_message= "abcdef\"zxc\"",
+                short_message = "abcdef\"zxc\"",
                 timestamp = date.DateTime,
                 version = "1.1",
                 _stringLevel = "Information",
@@ -66,7 +66,7 @@ namespace Serilog.Sinks.Graylog.Core.Tests.MessageBuilders
             GelfMessageBuilder messageBuilder = new GelfMessageBuilder("localhost", options);
             DateTime date = DateTime.UtcNow;
             string expectedHost = "my_host";
-            
+
             //act
             LogEvent logEvent = LogEventSource.GetSimpleLogEvent(date);
             JObject actual = messageBuilder.Build(logEvent);
@@ -75,7 +75,6 @@ namespace Serilog.Sinks.Graylog.Core.Tests.MessageBuilders
             //assert
             Assert.Equal(expectedHost, actualHost);
         }
-
 
         [Fact]
         public static void WhenTryCreateLogEventWithNullKeyOrValue_ThenThrow()
@@ -89,7 +88,6 @@ namespace Serilog.Sinks.Graylog.Core.Tests.MessageBuilders
                     {
                         new TextToken("abcdef", 0),
                         new PropertyToken("TestProp", "zxc", alignment: new Alignment(AlignmentDirection.Left, 3))
-
                     }), new List<LogEventProperty>
                     {
                         new LogEventProperty("TestProp", new ScalarValue("zxc")),

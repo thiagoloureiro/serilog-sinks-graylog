@@ -46,7 +46,7 @@ namespace Serilog.Sinks.Graylog.Tests.ComplexIntegrationTest
         public string LastName { get; set; }
 
         /// <summary>
-        /// В рамках виз это используется как "страна, на которую выдана виза" 
+        /// В рамках виз это используется как "страна, на которую выдана виза"
         /// В рамках остальных документов - пока никак.
         /// </summary>
         public Location CitizenshipCountry { get; set; }
@@ -56,7 +56,6 @@ namespace Serilog.Sinks.Graylog.Tests.ComplexIntegrationTest
     {
         public EmailAddress[] EmailAddresses { get; set; }
         public PhoneNumberContact[] PhoneNumbers { get; set; }
-
     }
 
     public class EmailAddress
@@ -81,7 +80,6 @@ namespace Serilog.Sinks.Graylog.Tests.ComplexIntegrationTest
         public string Code { get; set; }
 
         public Location LocatedIn { get; set; }
-
     }
 
     public class Company
@@ -102,6 +100,7 @@ namespace Serilog.Sinks.Graylog.Tests.ComplexIntegrationTest
     {
         //public int Id { get; set; }
         public string Type { get; set; }
+
         public string Code { get; set; }
         public LocalizedString Name { get; set; }
     }
@@ -111,15 +110,17 @@ namespace Serilog.Sinks.Graylog.Tests.ComplexIntegrationTest
         /// <summary>Gets or sets the name en.</summary>
         /// <value>The name en.</value>
         public string NameEn { get; set; }
+
         /// <summary>Gets or sets the name ru.</summary>
         /// <value>The name ru.</value>
         public string NameRu { get; set; }
+
         /// <summary>Gets or sets the value en.</summary>
         /// <value>The value en.</value>
         public string ValueEn { get; set; }
+
         /// <summary>Gets or sets the value ru.</summary>
         /// <value>The value ru.</value>
         public string ValueRu { get; set; }
     }
-
 }

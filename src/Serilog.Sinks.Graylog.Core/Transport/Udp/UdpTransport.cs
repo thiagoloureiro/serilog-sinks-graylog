@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Serilog.Sinks.Graylog.Core.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Serilog.Sinks.Graylog.Core.Extensions;
 
 namespace Serilog.Sinks.Graylog.Core.Transport.Udp
 {
@@ -21,7 +20,6 @@ namespace Serilog.Sinks.Graylog.Core.Transport.Udp
             _transportClient = transportClient;
             _chunkConverter = chunkConverter;
         }
-
 
         /// <summary>
         /// Sends the specified target.

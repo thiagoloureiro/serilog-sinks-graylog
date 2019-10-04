@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Serilog.Events;
 using Serilog.Sinks.Graylog.Core.Extensions;
 using Serilog.Sinks.Graylog.Core.Helpers;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Serilog.Sinks.Graylog.Core.MessageBuilders
 {
@@ -14,7 +14,6 @@ namespace Serilog.Sinks.Graylog.Core.MessageBuilders
     /// <seealso cref="IMessageBuilder" />
     public class GelfMessageBuilder : IMessageBuilder
     {
-        
         private readonly string _hostName;
         private const string DefaultGelfVersion = "1.1";
         protected GraylogSinkOptionsBase Options { get; }
@@ -73,7 +72,7 @@ namespace Serilog.Sinks.Graylog.Core.MessageBuilders
 
         private void AddAdditionalField(IDictionary<string, JToken> jObject,
                                         KeyValuePair<string, LogEventPropertyValue> property,
-                                        string memberPath = "" )
+                                        string memberPath = "")
         {
             string key = string.IsNullOrEmpty(memberPath)
                 ? property.Key
@@ -99,15 +98,17 @@ namespace Serilog.Sinks.Graylog.Core.MessageBuilders
                     }
 
                     var shouldCallToString = ShouldCallToString(scalarValue.Value.GetType());
-                
+
                     JToken value = JToken.FromObject(shouldCallToString ? scalarValue.Value.ToString() : scalarValue.Value);
-                
+
                     jObject.Add(key, value);
                     break;
+
                 case SequenceValue sequenceValue:
                     var sequenceValueString = RenderPropertyValue(sequenceValue);
                     jObject.Add(key, sequenceValueString);
                     break;
+
                 case StructureValue structureValue:
                     foreach (LogEventProperty logEventProperty in structureValue.Properties)
                     {
@@ -116,6 +117,7 @@ namespace Serilog.Sinks.Graylog.Core.MessageBuilders
                                            , key);
                     }
                     break;
+
                 case DictionaryValue dictionaryValue:
                     foreach (KeyValuePair<ScalarValue, LogEventPropertyValue> dictionaryValueElement in dictionaryValue.Elements)
                     {

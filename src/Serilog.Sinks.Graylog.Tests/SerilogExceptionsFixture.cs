@@ -1,7 +1,7 @@
-﻿using System;
-using Serilog.Events;
+﻿using Serilog.Events;
 using Serilog.Exceptions;
 using Serilog.Sinks.Graylog.Core.Transport;
+using System;
 using Xunit;
 
 namespace Serilog.Sinks.Graylog.Tests
@@ -17,14 +17,14 @@ namespace Serilog.Sinks.Graylog.Tests
             loggerConfig
                 .Enrich.WithExceptionDetails()
                 .WriteTo.Graylog(new GraylogSinkOptions
-            {
-                ShortMessageMaxLength = 50,
-                MinimumLogEventLevel = LogEventLevel.Information,
-                TransportType = TransportType.Http,
-                Facility = "VolkovTestFacility",
-                HostnameOrAddress = "http://logs.aeroclub.int",
-                Port = 12201
-            });
+                {
+                    ShortMessageMaxLength = 50,
+                    MinimumLogEventLevel = LogEventLevel.Information,
+                    TransportType = TransportType.Http,
+                    Facility = "VolkovTestFacility",
+                    HostnameOrAddress = "http://logs.aeroclub.int",
+                    Port = 12201
+                });
 
             var logger = loggerConfig.CreateLogger();
 

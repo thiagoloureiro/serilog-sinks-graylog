@@ -26,8 +26,8 @@ namespace Serilog.Sinks.Graylog.Core.Extensions
         /// <returns></returns>
         public static string Truncate(this string source, int maxLength)
         {
-            return source.Length > maxLength 
-                ? source.Substring(0, maxLength) 
+            return source.Length > maxLength
+                ? source.Substring(0, maxLength)
                 : source;
         }
 

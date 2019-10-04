@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Serilog.Debugging;
 using Serilog.Events;
 using Serilog.Sinks.Graylog.Core;
 using Serilog.Sinks.Graylog.Core.Transport;
 using Serilog.Sinks.PeriodicBatching;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Serilog.Sinks.Graylog.Batching
 {
@@ -18,7 +18,6 @@ namespace Serilog.Sinks.Graylog.Batching
 
         public PeriodicBatchingGraylogSink(BatchingGraylogSinkOptions options) : this(options, options.BatchSizeLimit, options.Period, options.QueueLimit)
         {
-
         }
 
         public PeriodicBatchingGraylogSink(BatchingGraylogSinkOptions options, int batchSizeLimit, TimeSpan period) : base(batchSizeLimit, period)
@@ -26,7 +25,6 @@ namespace Serilog.Sinks.Graylog.Batching
             ISinkComponentsBuilder sinkComponentsBuilder = new SinkComponentsBuilder(options);
             _transport = new Lazy<ITransport>(() => sinkComponentsBuilder.MakeTransport());
             _converter = new Lazy<IGelfConverter>(() => sinkComponentsBuilder.MakeGelfConverter());
-
         }
 
         public PeriodicBatchingGraylogSink(BatchingGraylogSinkOptions options, int batchSizeLimit, TimeSpan period, int queueLimit) : base(batchSizeLimit, period, queueLimit)

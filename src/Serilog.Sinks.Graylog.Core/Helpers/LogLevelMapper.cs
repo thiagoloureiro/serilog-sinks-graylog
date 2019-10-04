@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Serilog.Events;
+﻿using Serilog.Events;
+using System.Collections.Generic;
 
 namespace Serilog.Sinks.Graylog.Core.Helpers
 {

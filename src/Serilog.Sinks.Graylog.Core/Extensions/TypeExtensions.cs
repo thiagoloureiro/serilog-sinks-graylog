@@ -30,6 +30,7 @@ namespace Serilog.Sinks.Graylog.Core.Extensions
                 case TypeCode.Double:
                 case TypeCode.Single:
                     return true;
+
                 default:
                     return false;
             }

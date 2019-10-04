@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Moq;
+﻿using Moq;
 using Serilog.Sinks.Graylog.Core.MessageBuilders;
 using Serilog.Sinks.Graylog.Tests;
+using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Serilog.Sinks.Graylog.Core.Tests

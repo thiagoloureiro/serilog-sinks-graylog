@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Serilog.Sinks.Graylog.Core.Helpers;
+using Serilog.Sinks.Graylog.Core.MessageBuilders;
+using Serilog.Sinks.Graylog.Core.Transport;
+using Serilog.Sinks.Graylog.Core.Transport.Http;
+using Serilog.Sinks.Graylog.Core.Transport.Udp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using Serilog.Sinks.Graylog.Core.Helpers;
-using Serilog.Sinks.Graylog.Core.MessageBuilders;
-using Serilog.Sinks.Graylog.Core.Transport;
-using Serilog.Sinks.Graylog.Core.Transport.Http;
-using Serilog.Sinks.Graylog.Core.Transport.Udp;
 using SinkTransportType = Serilog.Sinks.Graylog.Core.Transport.TransportType;
 
 namespace Serilog.Sinks.Graylog.Core
@@ -16,6 +16,7 @@ namespace Serilog.Sinks.Graylog.Core
     public interface ISinkComponentsBuilder
     {
         ITransport MakeTransport();
+
         IGelfConverter MakeGelfConverter();
     }
 
@@ -27,7 +28,7 @@ namespace Serilog.Sinks.Graylog.Core
         public SinkComponentsBuilder(GraylogSinkOptionsBase options)
         {
             _options = options;
-            
+
             _builders = new Dictionary<BuilderType, Lazy<IMessageBuilder>>
             {
                 [BuilderType.Exception] = new Lazy<IMessageBuilder>(() =>
@@ -54,7 +55,6 @@ namespace Serilog.Sinks.Graylog.Core
                     IPAddress ipAddress = ipAddreses.FirstOrDefault(c => c.AddressFamily == AddressFamily.InterNetwork);
 
                     var ipEndpoint = new IPEndPoint(ipAddress ?? throw new InvalidOperationException(), _options.Port);
-
 
                     var chunkSettings = new ChunkSettings(_options.MessageGeneratorType, _options.MaxMessageSizeInUdp);
                     IDataToChunkConverter chunkConverter = new DataToChunkConverter(chunkSettings, new MessageIdGeneratorResolver());

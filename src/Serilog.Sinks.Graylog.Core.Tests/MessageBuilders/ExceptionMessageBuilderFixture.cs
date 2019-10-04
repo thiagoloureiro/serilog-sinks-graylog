@@ -1,9 +1,9 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Newtonsoft.Json.Linq;
 using Serilog.Events;
 using Serilog.Sinks.Graylog.Core.MessageBuilders;
 using Serilog.Sinks.Graylog.Tests;
+using System;
 using Xunit;
 
 namespace Serilog.Sinks.Graylog.Core.Tests.MessageBuilders
@@ -34,7 +34,6 @@ namespace Serilog.Sinks.Graylog.Core.Tests.MessageBuilders
             {
                 testExc = exc;
             }
-
 
             DateTimeOffset date = DateTimeOffset.Now;
             LogEvent logEvent = LogEventSource.GetExceptionLogEvent(date, testExc);

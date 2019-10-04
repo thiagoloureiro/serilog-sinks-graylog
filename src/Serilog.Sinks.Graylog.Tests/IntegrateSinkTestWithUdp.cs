@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoFixture;
+﻿using AutoFixture;
 using Serilog.Events;
-using Xunit;
 using Serilog.Sinks.Graylog.Core.Helpers;
 using Serilog.Sinks.Graylog.Core.Transport;
 using Serilog.Sinks.Graylog.Tests.ComplexIntegrationTest;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace Serilog.Sinks.Graylog.Tests
 {
@@ -39,7 +39,6 @@ namespace Serilog.Sinks.Graylog.Tests
                     Id = 2,
                     Prop = "123",
                     TestBarBooleanProperty = false
-
                 },
                 TestClassBooleanProperty = true,
                 TestPropertyOne = "1",
@@ -54,7 +53,6 @@ namespace Serilog.Sinks.Graylog.Tests
             logger.Fatal("SomeComplexTestEntry {@test}", test);
 
             logger.Error("SomeComplexTestEntry {@test}", test);
-
         }
 
         [Fact]
@@ -84,7 +82,6 @@ namespace Serilog.Sinks.Graylog.Tests
                     Id = 2,
                     Prop = "123",
                     TestBarBooleanProperty = false
-                    
                 },
                 TestClassBooleanProperty = true,
                 TestPropertyOne = "1",
@@ -122,11 +119,10 @@ namespace Serilog.Sinks.Graylog.Tests
 
             var logger = loggerConfig.CreateLogger();
 
-            var tasks = profiles.Select(c => 
+            var tasks = profiles.Select(c =>
             {
                 return Task.Run(() => logger.Information("TestSend {@BattleProfile}", c));
             });
-
 
             return Task.WhenAll(tasks.ToArray());
         }
@@ -210,7 +206,6 @@ namespace Serilog.Sinks.Graylog.Tests
                 TestPropertyThree = "3",
                 TestPropertyTwo = "2"
             };
-
 
             var logger = loggerConfig.CreateLogger();
 
